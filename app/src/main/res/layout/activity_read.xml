@@ -67,7 +67,10 @@
                 android:isScrollContainer="false"
                 android:numColumns="2"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="20dp" />
+                android:verticalSpacing="20dp">
+
+            </GridView>
+
         </LinearLayout>
 
         <com.github.clans.fab.FloatingActionMenu

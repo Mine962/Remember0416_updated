@@ -326,6 +326,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.info:
                 startActivity(new Intent(getApplicationContext(), informationActivity.class));
+                overridePendingTransition(R.anim.visibler, R.anim.vis);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

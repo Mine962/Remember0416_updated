@@ -9,9 +9,13 @@ import android.view.Gravity;
 import android.view.WindowManager;
 
 import com.dgsw.remember.R;
-import com.itsronald.widget.ViewPagerIndicator;
+import com.merhold.extensiblepageindicator.ExtensiblePageIndicator;
+
 
 public class informationActivity extends AppCompatActivity {
+    private infoFragmentAdapter mSimpleFragmentAdapter;
+    private ViewPager mViewPager;
+    private ExtensiblePageIndicator extensiblePageIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +25,14 @@ public class informationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_information);
 
-        ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
+        extensiblePageIndicator = (ExtensiblePageIndicator) findViewById(R.id.flexibleIndicator);
+        mSimpleFragmentAdapter = new infoFragmentAdapter(getSupportFragmentManager());
 
-        final ViewPager.LayoutParams layoutParams = new ViewPager.LayoutParams();
-        layoutParams.width = ViewPager.LayoutParams.MATCH_PARENT;
-        layoutParams.height = ViewPager.LayoutParams.WRAP_CONTENT;
-        layoutParams.gravity = Gravity.BOTTOM;
+        mSimpleFragmentAdapter.addFragment(infoFragment.newInstance(R.drawable.info_1));
+        mSimpleFragmentAdapter.addFragment(infoFragment.newInstance(R.drawable.info_2));
 
-        final ViewPagerIndicator viewPagerIndicator = new ViewPagerIndicator(getApplicationContext());
-        viewPager.addView(viewPagerIndicator, layoutParams);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSimpleFragmentAdapter);
+        extensiblePageIndicator.initViewPager(mViewPager);
     }
 }
