@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
@@ -14,22 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Starting.LoadingActivity"></activity>
+        <activity android:name=".InfoClass.informationActivity"></activity>
+        <activity android:name=".Starting.LoadingActivity" />
         <activity android:name=".Starting.EndActivity" />
         <activity android:name=".Starting.FlowActivity" />
         <activity android:name=".Write_0416.ReadActivity" />
         <activity android:name=".Write_0416.WriteActivity" />
-        <receiver android:name=".Receiver.AlarmReceiver"/>
+
+        <receiver android:name=".Receiver.AlarmReceiver" />
         <receiver
             android:name=".AltaAutoRun"
             android:enabled="true"
             android:exported="false"
             android:label="STARTReceiver">
-
-            <intent-filter >
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

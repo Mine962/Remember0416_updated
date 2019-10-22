@@ -1,6 +1,8 @@
 package com.dgsw.remember;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.app.AlertDialog;
@@ -13,6 +15,8 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -30,6 +34,7 @@ import android.widget.Toast;
 
 import com.dgsw.remember.InfoClass.infoAdapter;
 import com.dgsw.remember.InfoClass.infoData;
+import com.dgsw.remember.InfoClass.informationActivity;
 import com.dgsw.remember.SlideAdapter.SlideAdapter;
 import com.dgsw.remember.SlideAdapter.SlidingAdapter;
 import com.dgsw.remember.SlideAdapter.SlidingAnother;
@@ -61,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
     Calendar mCalendar;
     LinearLayout linear, content;
     CardView active, card_view;
-    int count, pos = 0 , type = 0;
+    int count, pos = 0, type = 0;
     String user_name, image_url, email;
     MediaPlayer musicPlayer;
     ImageView image;
     TextView text1, text2, text3, text4;
     ListView infoList;
-    boolean firstrun , btn;
+    boolean firstrun, btn;
     private CountDownTimer _timer;
     SliderView sliderView, imgs;
     Calendar calendar;
@@ -82,9 +87,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), LoadingActivity.class));
 
         calendar = Calendar.getInstance();
-        calendar.set(Calendar.MONTH,4);
-        calendar.set(Calendar.DAY_OF_MONTH,16);
+        calendar.set(Calendar.MONTH, 4);
+        calendar.set(Calendar.DAY_OF_MONTH, 16);
 
+        Toolbar tb = (Toolbar) findViewById(R.id.tool_infos);
+        setSupportActionBar(tb);
 
         infoList = (ListView) findViewById(R.id.infolist);
         imv = (ImageView) findViewById(R.id.background);
@@ -123,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
 
         TextView text = (TextView) layout.findViewById(R.id.text);
 
-        if(formatDate.contains("04월 16일")){
+        if (formatDate.contains("04월 16일")) {
             text.setText("오늘은 세월호 사건이 일어난 날입니다.\n\n오늘을 꼭 기억해주세요.");
-        }else{
-            text.setText("꼭 기억해주세요. 세월호 사건은 4월 16일입니다.\n\n오늘은 "+formatDate+"입니다.");
+        } else {
+            text.setText("꼭 기억해주세요. 세월호 사건은 4월 16일입니다.\n\n오늘은 " + formatDate + "입니다.");
 
         }
         Toast toast = new Toast(getApplicationContext());
@@ -136,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
 
-        musicPlayer = MediaPlayer.create(MainActivity.this, R.raw.music_sorry_0416);
+        musicPlayer = MediaPlayer.create(MainActivity.this, R.raw.second_music);
         musicPlayer.start();
         musicPlayer.setLooping(true);
 
@@ -153,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         content = (LinearLayout) findViewById(R.id.linear_content);
 
-
+        ActionBar ab = getSupportActionBar();
 
 
         infoList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -164,17 +171,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if (get_title.contains("사건")) {
                     case_view();
-                }else if(get_title.contains("위인")) {
+                } else if (get_title.contains("위인")) {
 
                     case_do();
-                }else{
+                } else {
                     Toast.makeText(getApplicationContext(), "오류_001 : 리스트 파악 불가", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-
-
 
 
         if (!firstrun) {
@@ -226,56 +231,56 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                            if (firstrun) {
-                                if (accept.isChecked()) {
-                                    long now = System.currentTimeMillis();
-                                    // 현재시간을 date 변수에 저장한다.
-                                    Date date = new Date(now);
-                                    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-                                    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                                    // nowDate 변수에 값을 저장한다.
-                                    String formatDate = sdfNow.format(date);
+                if (firstrun) {
+                    if (accept.isChecked()) {
+                        long now = System.currentTimeMillis();
+                        // 현재시간을 date 변수에 저장한다.
+                        Date date = new Date(now);
+                        // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
+                        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        // nowDate 변수에 값을 저장한다.
+                        String formatDate = sdfNow.format(date);
 
 
-                                    Toast.makeText(getApplicationContext(), formatDate + " , 경고문 처리에 동의하셨습니다.", Toast.LENGTH_SHORT).show();
-                                    preview();
+                        Toast.makeText(getApplicationContext(), formatDate + " , 경고문 처리에 동의하셨습니다.", Toast.LENGTH_SHORT).show();
+                        preview();
 
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            active.startAnimation(animation_visible2);
-                                            active.setVisibility(View.GONE);
-                                            new Handler().postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    card_view.startAnimation(animation_visible);
-                                                    card_view.setVisibility(View.VISIBLE);
-                                                    infoList.startAnimation(animation_visible);
-                                                    infoList.setVisibility(View.VISIBLE);
-                                                }
-                                            }, 1000);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                active.startAnimation(animation_visible2);
+                                active.setVisibility(View.GONE);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        card_view.startAnimation(animation_visible);
+                                        card_view.setVisibility(View.VISIBLE);
+                                        infoList.startAnimation(animation_visible);
+                                        infoList.setVisibility(View.VISIBLE);
+                                    }
+                                }, 1000);
 
-                                        }
-                                    }, 2000);
-
-
-                                    getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                                            .edit()
-                                            .putBoolean("FirstState", false)
-                                            .commit();
-
-                                } else {
-
-                                    getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                                            .edit()
-                                            .putBoolean("FirstState", true)
-                                            .commit();
-                                }
-
-                            } else {
-                                card_view.setVisibility(View.VISIBLE);
-                                infoList.setVisibility(View.VISIBLE);
                             }
+                        }, 2000);
+
+
+                        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("FirstState", false)
+                                .commit();
+
+                    } else {
+
+                        getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("FirstState", true)
+                                .commit();
+                    }
+
+                } else {
+                    card_view.setVisibility(View.VISIBLE);
+                    infoList.setVisibility(View.VISIBLE);
+                }
 
             }
         });
@@ -297,8 +302,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                        startActivity(new Intent(getApplicationContext(), EndActivity.class));
-                        overridePendingTransition(R.anim.visibler, R.anim.vis);
+                startActivity(new Intent(getApplicationContext(), EndActivity.class));
+                overridePendingTransition(R.anim.visibler, R.anim.vis);
 
                 materialDesignFAM.close(true);
 
@@ -307,6 +312,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu) ;
+
+        return true ;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.info:
+                startActivity(new Intent(getApplicationContext(), informationActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     void case_do(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();

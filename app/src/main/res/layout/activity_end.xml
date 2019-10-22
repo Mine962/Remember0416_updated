@@ -64,11 +64,11 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="17sp"
             android:fontFamily="@font/font_main"
-            android:text="음악 이름 , 임형주 - 천개의 바람이 되어" />
+            android:gravity="center"
+            android:text="음악 이름 , 루시드 폴( LUCID FALL ) - 아직, 있다."
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
 
         <Space
             android:layout_width="match_parent"

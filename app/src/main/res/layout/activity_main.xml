@@ -14,148 +14,166 @@
         android:background="@drawable/write_ground" />
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/color_background"
-                android:gravity="center_horizontal|top"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <Space
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp" />
+                    android:layout_height="match_parent"
+                    android:background="@color/color_background"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/font_main"
-                    android:gravity="center"
-                    android:text="기억해주세요."
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/font_main"
-                    android:gravity="center"
-                    android:text="remember 0416 "
-                    android:textColor="@android:color/white" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/active"
-                    android:layout_width="370dp"
-                    android:layout_height="200dp"
-                    android:background="@color/cardview_light_background">
-
-                    <LinearLayout
-                        android:id="@+id/view_click"
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/tool_infos"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardview_shadow_start_color"
+                        android:minHeight="?attr/actionBarSize"
+                        android:theme="@style/ToolbarTheme" />
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp" />
 
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/font_main"
-                            android:text="   경고문"
-                            android:textColor="@android:color/holo_red_dark"
-                            android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_main"
+                        android:gravity="center"
+                        android:text="기억해주세요."
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="10dp" />
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_main"
+                        android:gravity="center"
+                        android:text="remember 0416 "
+                        android:textColor="@android:color/white" />
 
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="335dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/font_main"
-                            android:text="@string/warning"
-                            android:textColor="@android:color/black"
-                            android:textSize="12sp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/active"
+                        android:layout_width="370dp"
+                        android:layout_height="200dp"
+                        android:background="@color/cardview_light_background">
 
                         <LinearLayout
+                            android:id="@+id/view_click"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="right|center_vertical"
-                            android:orientation="horizontal">
-
-                            <CheckBox
-                                android:id="@+id/accpet"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/font_main"
-                                android:text="해당 내용을 모두 이해했습니다."
-                                android:textSize="12sp" />
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
                             <Space
-                                android:layout_width="10dp"
-                                android:layout_height="wrap_content" />
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp" />
+
+                            <TextView
+                                android:id="@+id/textView6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_main"
+                                android:text="   경고문"
+                                android:textColor="@android:color/holo_red_dark"
+                                android:textSize="20sp" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="10dp" />
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="335dp"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_main"
+                                android:text="@string/warning"
+                                android:textColor="@android:color/black"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="right|center_vertical"
+                                android:orientation="horizontal">
+
+                                <CheckBox
+                                    android:id="@+id/accpet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_main"
+                                    android:text="해당 내용을 모두 이해했습니다."
+                                    android:textSize="12sp" />
+
+                                <Space
+                                    android:layout_width="10dp"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
                         </LinearLayout>
 
-                    </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="290dp"
-                    android:layout_margin="16dp"
-                    android:visibility="invisible"
-                    app:cardCornerRadius="6dp">
-
-                    <com.smarteist.autoimageslider.SliderView
-                        android:id="@+id/imageSlider"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:sliderAnimationDuration="600"
-                        app:sliderAutoCycleDirection="back_and_forth"
-                        app:sliderAutoCycleEnabled="true"
-                        app:sliderCircularHandlerEnabled="true"
-                        app:sliderIndicatorAnimationDuration="600"
-                        app:sliderIndicatorGravity="center_horizontal|bottom"
-                        app:sliderIndicatorMargin="10dp"
-                        app:sliderIndicatorOrientation="horizontal"
-                        app:sliderIndicatorPadding="3dp"
-                        app:sliderIndicatorRadius="2dp"
-                        app:sliderIndicatorSelectedColor="#5A5A5A"
-                        app:sliderIndicatorUnselectedColor="#FFF"
-                        app:sliderScrollTimeInSec="1"
-                        app:sliderStartAutoCycle="true" />
+                        android:layout_height="290dp"
+                        android:layout_margin="16dp"
+                        android:visibility="invisible"
+                        app:cardCornerRadius="6dp">
 
-                </androidx.cardview.widget.CardView>
+                        <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/imageSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:sliderAnimationDuration="600"
+                            app:sliderAutoCycleDirection="back_and_forth"
+                            app:sliderAutoCycleEnabled="true"
+                            app:sliderCircularHandlerEnabled="true"
+                            app:sliderIndicatorAnimationDuration="600"
+                            app:sliderIndicatorGravity="center_horizontal|bottom"
+                            app:sliderIndicatorMargin="10dp"
+                            app:sliderIndicatorOrientation="horizontal"
+                            app:sliderIndicatorPadding="3dp"
+                            app:sliderIndicatorRadius="2dp"
+                            app:sliderIndicatorSelectedColor="#5A5A5A"
+                            app:sliderIndicatorUnselectedColor="#FFF"
+                            app:sliderScrollTimeInSec="1"
+                            app:sliderStartAutoCycle="true" />
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp" />
+                    </androidx.cardview.widget.CardView>
 
-                <ListView
-                    android:id="@+id/infolist"
-                    android:layout_width="390dp"
-                    android:layout_height="300dp"
-                    android:visibility="invisible" />
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp" />
 
-            </LinearLayout>
-        </RelativeLayout>
+                    <ListView
+                        android:id="@+id/infolist"
+                        android:layout_width="390dp"
+                        android:layout_height="300dp"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/material_design_android_floating_action_menu"
